@@ -1,2 +1,7 @@
-﻿  01_hello_SDL.cpp
-  SDLprjct.vcxproj -> C:\Users\uchenik\source\repos\SDLprjct\x64\Debug\SDLprjct.exe
+﻿  123.cpp
+  RenderWindow.cpp
+  Enemy.cpp
+C:\Users\uchenik\Documents\GitHub\CyberHren3\SDLprjct\Enemy.cpp(6,9): error C2062: тип "int" не требуется
+C:\Users\uchenik\Documents\GitHub\CyberHren3\SDLprjct\Enemy.cpp(6,18): error C2238: непредвиденные лексемы перед ";"
+C:\Users\uchenik\Documents\GitHub\CyberHren3\SDLprjct\Enemy.cpp(10,1): fatal error C1004: непредвиденное обнаружение конца файла
+  Создание кода...

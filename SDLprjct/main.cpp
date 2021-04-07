@@ -50,7 +50,7 @@ void drawArray(int x, int y, vector <vector <bool> > arr, SDL_Renderer rende)
         }
     }
 }
-*/
+
 int main(int argc, char* args[])
 {
     //SDL_Init( SDL_INIT_EVERYTHING );
@@ -69,4 +69,4 @@ int main(int argc, char* args[])
     SDL_Quit();
     return 0;
 }
-
+*/
