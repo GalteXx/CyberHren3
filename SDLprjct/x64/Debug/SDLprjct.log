@@ -1,7 +1,3 @@
-﻿  123.cpp
-  RenderWindow.cpp
-  Enemy.cpp
-C:\Users\uchenik\Documents\GitHub\CyberHren3\SDLprjct\Enemy.cpp(6,9): error C2062: тип "int" не требуется
-C:\Users\uchenik\Documents\GitHub\CyberHren3\SDLprjct\Enemy.cpp(6,18): error C2238: непредвиденные лексемы перед ";"
-C:\Users\uchenik\Documents\GitHub\CyberHren3\SDLprjct\Enemy.cpp(10,1): fatal error C1004: непредвиденное обнаружение конца файла
-  Создание кода...
+﻿  main.cpp
+  LINK : не найден или не выполнена сборка C:\Users\uchenik\Documents\GitHub\CyberHren3\x64\Debug\SDLprjct.exe при последней инкрементной компоновке; выполняется полная компоновка
+  SDLprjct.vcxproj -> C:\Users\uchenik\Documents\GitHub\CyberHren3\x64\Debug\SDLprjct.exe
