@@ -25,6 +25,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="All.h" />
     <ClInclude Include="RenderWindow.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

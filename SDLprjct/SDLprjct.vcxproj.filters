@@ -30,7 +30,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderWindow.hpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="All.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
