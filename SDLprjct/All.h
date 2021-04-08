@@ -6,7 +6,9 @@
 #ifdef ALL_H
 
 
-void update(SDL_Renderer* rende);
+void clear(SDL_Renderer* rende);
+void present(SDL_Renderer* rende);
+void rect(int x, int y, int xe, int ye, SDL_Renderer* rende);
 
 
 class Enemy
@@ -16,7 +18,12 @@ public:
 	//int coords[2];// x, y
 	int x;
 	int y;
-	int size = 20;//px
+	int size;//px
+	void en_spawn(int x, int y, int size, SDL_Renderer* rende)
+	{
+		rect(x, y, size, size, rende);
+		//update(rende);
+	}
 };
 
 

@@ -18,10 +18,13 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Update.cpp">
+    <ClCompile Include="AddEnemy.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="AddEnemy.cpp">
+    <ClCompile Include="Present.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Clear.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
