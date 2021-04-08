@@ -118,8 +118,8 @@ int main(int argc, char* args[])
         }
     }*/
 
-    int x = 200;
-    int y = 200;
+    int x = 400;
+    int y = 400;
     int size = 50;
     sq(x, y, size, rende);
     present(rende);
@@ -133,8 +133,8 @@ int main(int argc, char* args[])
             {
                 SDL_GetMouseState(&xMouse, &yMouse);
             }
-            int xdif = x - xMouse;
-            int ydif = y - yMouse;
+            int xdif = 100 - x - xMouse;
+            int ydif = 100 -y - yMouse;
             if (abs(xMouse - x) <= 100 && abs(yMouse - y) <= 100)
             {
                 sq(x + xdif, y + ydif, size, rende);
