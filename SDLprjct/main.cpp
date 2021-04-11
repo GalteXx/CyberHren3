@@ -1,22 +1,5 @@
 #include "All.h"
 
-void xLine(int x, int y, int xe, SDL_Renderer* rende)
-{
-    for (int i = x; i < xe; i++)
-    {
-        SDL_RenderDrawPoint(rende, i, y);
-    }
-}
-
-
-void rect(int x, int y, int xe, int ye, SDL_Renderer* rende)
-{
-    for (int i = y; i < ye; i++)
-    {
-        xLine(x, i, xe, rende);
-    }
-}
-
 void sq(int x, int y, int l, SDL_Renderer* rende)
 {
     for (int i = x; i < x + l; i++)
@@ -30,25 +13,6 @@ void sq(int x, int y, int l, SDL_Renderer* rende)
 
 }
 
-void run(SDL_Renderer* rende, int x, int y, int xe, int ye)
-{
-
-    while (x != xe || y != ye)
-    {
-        SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
-        rect(x, y, x + 30, y + 30, rende);
-        if (x < xe)
-            x++;
-        if (x > xe)
-            x--;
-        if (y < ye)
-            y++;
-        if (y > ye)
-            y--;
-        SDL_SetRenderDrawColor(rende, 0, 0, 0, 255);
-
-    }
-}
 
 
 //void drawArray(int x, int y, vector <vector <bool> > arr, SDL_Renderer rende)
@@ -118,6 +82,18 @@ int main(int argc, char* args[])
         }
     }*/
 
+    Enemy en;
+    en.x = 0;
+    en.y = 20;
+    en.goal[0] = 240;
+    en.goal[1] = 240;
+    while (true)
+    {
+        en.updt(rende);
+    }
+
+
+    /* adfasfafsd
     int x = 200;
     int y = 200;
     int size = 50;
@@ -141,6 +117,9 @@ int main(int argc, char* args[])
                 present(rende);
                 clear(rende);
             }
+            
+
+
 
             /*if (xMouse - x <= 15)
             {
@@ -155,9 +134,10 @@ int main(int argc, char* args[])
                 sq(x, y, size, rende);
                 present(rende);
                 clear(rende);
-            }*/
+            } ///
         }
     }
+    asfdafsasfa*/
     SDL_Quit();
     return 0;
 }
