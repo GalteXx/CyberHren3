@@ -1,56 +1,27 @@
 #include "All.h"
-
-void xLine(int x, int y, int xe, SDL_Renderer* rende)
-{
-    for (int i = x; i < xe; i++)
-    {
-        SDL_RenderDrawPoint(rende, i, y);
-    }
-}
-
-
-void rect(int x, int y, int xe, int ye, SDL_Renderer* rende)
-{
-    for (int i = y; i < ye; i++)
-    {
-        xLine(x, i, xe, rende);
-    }
-}
+#include <vector>
 
 void sq(int x, int y, int l, SDL_Renderer* rende)
 {
-    for (int i = x; i < x + l; i++)
+    /*for (int i = x; i < x + l; i++)
         SDL_RenderDrawPoint(rende, i, y);
     for (int i = x; i <= x + l; i++)
         SDL_RenderDrawPoint(rende, i, y + l);
     for (int i = y; i < y + l; i++)
         SDL_RenderDrawPoint(rende, x, i);
     for (int i = y; i < y + l; i++)
-        SDL_RenderDrawPoint(rende, x + l, i);
+        SDL_RenderDrawPoint(rende, x + l, i);*/
+    for (int i = x - l/2; i < x + l/2; i++) //top
+        SDL_RenderDrawPoint(rende, i, y - l/2);
+    for (int i = x - l / 2; i < x + l / 2 + 1; i++) //bottom
+        SDL_RenderDrawPoint(rende, i, y + l/2);
+    for (int i = y - l / 2; i < y + l/2; i++) //left
+        SDL_RenderDrawPoint(rende, x - l/2, i);
+    for (int i = y - l / 2; i < y + l / 2; i++) //right
+        SDL_RenderDrawPoint(rende, x + l/2, i); 
+
 
 }
-
-void run(SDL_Renderer* rende, int x, int y, int xe, int ye)
-{
-
-    while (x != xe || y != ye)
-    {
-        SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
-        rect(x, y, x + 30, y + 30, rende);
-        if (x < xe)
-            x++;
-        if (x > xe)
-            x--;
-        if (y < ye)
-            y++;
-        if (y > ye)
-            y--;
-        SDL_SetRenderDrawColor(rende, 0, 0, 0, 255);
-
-    }
-}
-
-
 //void drawArray(int x, int y, vector <vector <bool> > arr, SDL_Renderer rende)
 //{
 //    for(int i = 0; i < arr.size(); i)
@@ -62,12 +33,6 @@ void run(SDL_Renderer* rende, int x, int y, int xe, int ye)
 //        }
 //    }
 //}
-
-void hor(int x, int y, int l, SDL_Renderer* ren)
-{
-    for (int i = 0; i < l; i++)
-        SDL_RenderDrawPoint(ren, i + x, y);
-}
 
 int main(int argc, char* args[])
 {
@@ -117,9 +82,8 @@ int main(int argc, char* args[])
             }
         }
     }*/
-
-    int x = 400;
-    int y = 400;
+    int x = 600;
+    int y = 600;
     int size = 50;
     sq(x, y, size, rende);
     present(rende);
@@ -133,29 +97,40 @@ int main(int argc, char* args[])
             {
                 SDL_GetMouseState(&xMouse, &yMouse);
             }
-            int xdif = 100 - x - xMouse;
-            int ydif = 100 -y - yMouse;
-            if (abs(xMouse - x) <= 100 && abs(yMouse - y) <= 100)
+            int difx = xMouse - x;
+            int dify = yMouse - y;
+            if (difx < 50 && difx > 0 && dify < 50 && dify > 0) // оба положит
             {
-                sq(x + xdif, y + ydif, size, rende);
-                present(rende);
-                clear(rende);
-            }
-
-            /*if (xMouse - x <= 15)
-            {
-                x--;
+                x -= difx;
+                y -= dify;
                 sq(x, y, size, rende);
                 present(rende);
                 clear(rende);
             }
-            else if (x - xMouse <= 15)
+            else if (difx > -50 && difx < 0 && dify > -50 && dify < 0) // оба отриц
             {
-                x++;
+                x -= difx;
+                y -= dify;
                 sq(x, y, size, rende);
                 present(rende);
                 clear(rende);
-            }*/
+            }
+            else if (difx > -50 && difx < 0 && dify > 0 && dify < 50) // x отриц y положит
+            {
+                x += difx;
+                y -= dify;
+                sq(x, y, size, rende);
+                present(rende);
+                clear(rende);
+            }
+            else if (difx > 0 && difx < 50 && dify > -50 && dify <  0) // x положит y отриц
+            {
+                x += difx;
+                y -= dify;
+                sq(x, y, size, rende);
+                present(rende);
+                clear(rende);
+            }
         }
     }
     SDL_Quit();
