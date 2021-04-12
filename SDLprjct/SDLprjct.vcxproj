@@ -23,6 +23,8 @@
     <ClCompile Include="AddEnemy.cpp" />
     <ClCompile Include="Present.cpp" />
     <ClCompile Include="Clear.cpp" />
+    <ClCompile Include="rect.cpp" />
+    <ClCompile Include="xLine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="All.h" />

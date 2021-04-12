@@ -9,20 +9,58 @@
 void clear(SDL_Renderer* rende);
 void present(SDL_Renderer* rende);
 void rect(int x, int y, int xe, int ye, SDL_Renderer* rende);
+void xLine(int x, int y, int xe, SDL_Renderer* rende);
+
+
 
 
 class Enemy
 {
 public:
-	int speed;// ++ every 10 secs
-	//int coords[2];// x, y
+	int speed = 50;// ++ every 10 secs
 	int x;
 	int y;
-	int size;//px
-	void en_spawn(int x, int y, int size, SDL_Renderer* rende)
+    int goal[2];// x, y
+	int size = 20;//px
+	//void spawn(int x, int y, int size, SDL_Renderer* rende) не согласен с этим
+	//{
+	//	rect(x, y, size, size, rende);
+	//	//update(rende);
+	//}
+	void updt(SDL_Renderer *rende)
 	{
-		rect(x, y, size, size, rende);
-		//update(rende);
+        clear(rende);//delete this, after making nice update func
+        run(goal[0], goal[1], rende);
+        present(rende);//this as well
+        
+	}
+	void run(int xe, int ye, SDL_Renderer* rende)
+	{
+        
+            const int deltaX = abs(xe - x);
+            const int deltaY = abs(ye - y);
+            const int signX = x < xe ? 1 : -1;
+            const int signY = y < ye ? 1 : -1;
+            int error = deltaX - deltaY;
+            while (x != xe || y != ye)
+            {
+                
+                clear(rende);
+                rect(x, y, x + size, y + size, rende);
+                present(rende);
+                SDL_Delay(speed);
+                int error2 = error * 2;
+                if (error2 > -deltaY)
+                {
+                    error -= deltaY;
+                    x += signX;
+                }
+                if (error2 < deltaX)
+                {
+                    error += deltaX;
+                    y += signY;
+                }
+            }
 	}
 };
 
