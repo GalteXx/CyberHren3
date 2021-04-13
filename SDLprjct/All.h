@@ -2,14 +2,15 @@
 #include <SDL.h>
 #include <vector>
 #include <cmath>
+using namespace std;
 #define ALL_H
 #ifdef ALL_H
 
 
 void clear(SDL_Renderer* rende);
 void present(SDL_Renderer* rende);
-void rect(int x, int y, int xe, int ye, SDL_Renderer* rende);
 void xLine(int x, int y, int xe, SDL_Renderer* rende);
+void sq(int x, int y, int l, SDL_Renderer* rende);
 
 
 
@@ -22,11 +23,10 @@ public:
 	int y;
     int goal[2];// x, y
 	int size = 20;//px
-	//void spawn(int x, int y, int size, SDL_Renderer* rende) не согласен с этим
-	//{
-	//	rect(x, y, size, size, rende);
-	//	//update(rende);
-	//}
+	void spawn(int x, int y, int size, SDL_Renderer* rende)
+	{
+		sq(x, y, size, rende);
+	}
 	void updt(SDL_Renderer *rende)
 	{
         clear(rende);//delete this, after making nice update func
@@ -46,7 +46,7 @@ public:
             {
                 
                 clear(rende);
-                rect(x, y, x + size, y + size, rende);
+                sq(x, y, size, rende);
                 present(rende);
                 SDL_Delay(speed);
                 int error2 = error * 2;

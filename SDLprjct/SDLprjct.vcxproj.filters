@@ -27,10 +27,10 @@
     <ClCompile Include="Clear.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="rect.cpp">
+    <ClCompile Include="xLine.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="xLine.cpp">
+    <ClCompile Include="sq.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

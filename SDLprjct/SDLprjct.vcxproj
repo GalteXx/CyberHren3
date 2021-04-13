@@ -23,7 +23,7 @@
     <ClCompile Include="AddEnemy.cpp" />
     <ClCompile Include="Present.cpp" />
     <ClCompile Include="Clear.cpp" />
-    <ClCompile Include="rect.cpp" />
+    <ClCompile Include="sq.cpp" />
     <ClCompile Include="xLine.cpp" />
   </ItemGroup>
   <ItemGroup>
