@@ -20,9 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="AddEnemy.cpp" />
     <ClCompile Include="Present.cpp" />
     <ClCompile Include="Clear.cpp" />
+    <ClCompile Include="update.cpp" />
     <ClCompile Include="sq.cpp" />
     <ClCompile Include="xLine.cpp" />
   </ItemGroup>
