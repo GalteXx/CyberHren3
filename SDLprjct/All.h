@@ -1,7 +1,9 @@
-#pragma once
+#pragma once//ABOBUS
 #include <SDL.h>
+#include "m.h"
 #include <vector>
 #include <cmath>
+
 using namespace std;
 #define ALL_H
 #ifdef ALL_H
@@ -26,63 +28,48 @@ public:
 	void updt(SDL_Renderer *rende)
 	{
         //clear(rende);//delete this, after making nice update func
-        run(goal[0], goal[1], rende);
-        push(rende);
+        run(rende);
+        //push(rende);
         sq(x, y, size, rende);
         //present(rende);//this as well
 	}
-	void run(int xe, int ye, SDL_Renderer* rende)
+	void run( SDL_Renderer* rende)
 	{
-        
-            /*int deltaX = abs(xe - x);
-            int deltaY = abs(ye - y);
-            int signX = x < xe ? 1 : -1;
-            int signY = y < ye ? 1 : -1;
-            int error = deltaX - deltaY;
-            while (x != xe || y != ye)
-            {*/
-             
-                //push(rende);
-                //SDL_Event event_stop;
-                //int xMouse = 0, yMouse = 0;
-                //SDL_PollEvent(&event_stop);
-                //if (event_stop.type == SDL_MOUSEMOTION)
-                //{
-                //    SDL_GetMouseState(&xMouse, &yMouse);
-                //    if (abs(xMouse - x) < 50 && abs(yMouse - x) < 50)
-                //        push(rende);7
-                //}
-                int deltaX = abs(xe - x);
-                int deltaY = abs(ye - y);
-                int signX = x < xe ? 1 : -1;
-                int signY = y < ye ? 1 : -1;
-                int error = deltaX - deltaY;
-                
-                int error2 = error * 2;
-                if (error2 > -deltaY)
-                {
-                    error -= deltaY;
-                    x += signX;
-                }
-                if (error2 < deltaX)
-                {
-                    error += deltaX;
-                    y += signY;
-                }
+        push(rende);
+        int deltaX = abs(goal[0] - x);
+        int deltaY = abs(goal[1] - y);
+        int signX = x < goal[0] ? 1 : -1;
+        int signY = y < goal[1] ? 1 : -1;
+        int error = deltaX - deltaY;
+        int error2 = error * 2;
+        if (error2 > -deltaY)
+        {
+            error -= deltaY;
+            x += signX;
+        }
+        if (error2 < deltaX)
+        {
+            error += deltaX;
+            y += signY;
+        }
 	}
     void push(SDL_Renderer *rende)
     {
         SDL_Event event;
-        int xMouse = 0, yMouse = 0;
         bool GameRunning = true;
-        while (SDL_PollEvent(&event))
-        {
+        SDL_PollEvent(&event);
+        //while (SDL_PollEvent(&event))
+        //{
             if (event.type == SDL_MOUSEMOTION)
             {
-                SDL_GetMouseState(&xMouse, &yMouse);
+                int xe, ye;
+                SDL_GetMouseState(&xe, &ye);
+                m::setX(xe);
+                m::setY(ye);
+                
             }
-            int difx = xMouse - x;
-            int dify = yMouse - y;
+            int difx = m::getX() - x;
+            int dify = m::getY() - y;
             if (difx < 50 && difx > 0 && dify < 50 && dify > 0) // оба положит
             {
                 x -= difx;
@@ -115,9 +102,10 @@ public:
                 present(rende);
                 clear(rende);
             }
-        }
+        //}
     }
 };
+
 
 
 //void spawnEn(vector <Enemy> arr);
