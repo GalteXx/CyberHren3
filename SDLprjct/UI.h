@@ -6,13 +6,11 @@
 static class UI
 {
 public:
-		
-	int hp = 3;
 
 
-	void update(SDL_Renderer* rende)
+	static void update(SDL_Renderer* rende)
 	{
-		for (int i = 0; i < hp, i++)
+		for (int i = 0; i < tower::hp; i++)
 		{
 			sq(295 + 15 * i, 25, 30, rende);
 		}

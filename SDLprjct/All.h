@@ -32,6 +32,7 @@ string int_to_str(int a);
 
 
 
+
 class Enemy
 {
 public:
@@ -109,6 +110,7 @@ public:
                 clear(rende);
             }
     }
+
 };
 
 #endif

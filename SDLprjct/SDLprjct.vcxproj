@@ -33,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="All.h" />
+    <ClInclude Include="tower.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="m.h" />
   </ItemGroup>

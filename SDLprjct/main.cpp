@@ -1,13 +1,35 @@
 #include "All.h"
+#include "tower.h"
+#include "UI.h"
 
 int m::x;
 int m::y;
 int Enemy::speed;
+int tower::hp;//why do i have to do this...
+
+void collide(Enemy en, tower tow)
+{
+    int xpoint = 1;
+    int ypoint = 1;
+
+    if (en.x + en.size >= tow.x - tow.size && en.x - en.size <= tow.x + tow.size)//if lefter
+        xpoint--;
+    else if (en.x + en.size >= tow.x - tow.size && en.x - en.size >= tow.x + tow.size)//if righter
+        xpoint--;
+    if (en.y + en.size >= tow.y - tow.size && en.y - en.size <= tow.y + tow.size)//if above
+        ypoint--;
+    else if (en.y - en.size <= tow.y + tow.size && en.y + en.size > tow.y - tow.size)//if under
+
+        if (ypoint == 0 && xpoint == 0)
+            tower::hp--;
+}
+
 
 int main(int argc, char* args[])
 {
     SDL_Window* wind;
     SDL_Renderer* rende;
+    tower tow;
     SDL_CreateWindowAndRenderer(800, 800, 0, &wind, &rende);
     SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
     bool GameRunning = true, Menu = true, ChooseDifficulty = true;
@@ -85,7 +107,10 @@ int main(int argc, char* args[])
         for (int i = 0; i < arr.size(); i++)
         {
             arr[i].updt(rende);
+            collide(arr[i], tow);
+            UI::update(rende);
         }
+        tow.updt(rende);
         present(rende);
     }
     //int x = 100;
