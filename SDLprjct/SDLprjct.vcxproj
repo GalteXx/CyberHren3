@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="collide.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Present.cpp" />
     <ClCompile Include="Clear.cpp" />
@@ -28,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="All.h" />
+    <ClInclude Include="UI.h" />
     <ClInclude Include="m.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
