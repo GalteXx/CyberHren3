@@ -1,4 +1,4 @@
-#pragma once//ABOBUS
+#pragma once
 #include <SDL.h>
 #include "m.h"
 #include <vector>
@@ -9,14 +9,6 @@ using namespace std;
 #define ALL_H
 #ifdef ALL_H
 
-
-void clear(SDL_Renderer* rende);
-void present(SDL_Renderer* rende);
-void xLine(int x, int y, int xe, SDL_Renderer* rende);
-void sq(int x, int y, int l, SDL_Renderer* rende);
-void rc(int x, int y, int w, int h, SDL_Renderer* rende);
-
-
 class SpriteData
 {
 public:
@@ -25,21 +17,33 @@ public:
     vector <vector<SDL_Color> > texture;
 };
 
+void clear(SDL_Renderer* rende);
+void present(SDL_Renderer* rende);
+void xLine(int x, int y, int xe, SDL_Renderer* rende);
+void sq(int x, int y, int l, SDL_Renderer* rende);
+void rc1(int x, int y, int w, int h, SDL_Renderer* rende);
+void rc2(int x, int y, int w, int h, SDL_Renderer* rende);
+Uint32 getpixel(SDL_Surface* surface, int x, int y);
+SpriteData loadTexture(char* path);
+void drawTexture(int x, int y, SpriteData pic, SDL_Renderer* rende);
+//void points(int p);
+int num_len(int a);
+string int_to_str(int a);
+
+
+
 class Enemy
 {
 public:
-	int speed = 50;// ++ every 10 secs
+	static int speed;// ++ every 10 secs
 	int x = 0;
 	int y = 0;
     int goal[2] = {400, 400};// x, y
 	int size = 20;//px
 	void updt(SDL_Renderer *rende)
 	{
-        //clear(rende);//delete this, after making nice update func
         run(rende);
-        //push(rende);
         sq(x, y, size, rende);
-        //present(rende);//this as well
 	}
 	void run( SDL_Renderer* rende)
 	{
@@ -66,8 +70,6 @@ public:
         SDL_Event event;
         bool GameRunning = true;
         SDL_PollEvent(&event);
-        //while (SDL_PollEvent(&event))
-        //{
             if (event.type == SDL_MOUSEMOTION)
             {
                 int xe, ye;
@@ -78,44 +80,35 @@ public:
             }
             int difx = m::getX() - x;
             int dify = m::getY() - y;
-            if (difx < 50 && difx > 0 && dify < 50 && dify > 0) // оба положит
+            if (difx < 50 && difx > 0 && dify < 50 && dify > 0) // both pos
             {
                 x -= difx;
                 y -= dify;
-                // dd
                 present(rende);
                 clear(rende);
             }
-            else if (difx > -50 && difx < 0 && dify > -50 && dify < 0) // оба отриц
+            else if (difx > -50 && difx < 0 && dify > -50 && dify < 0) // both neg
             {
                 x -= difx;
                 y -= dify;
-                // dd
                 present(rende);
                 clear(rende);
             }
-            else if (difx > -50 && difx < 0 && dify > 0 && dify < 50) // x отриц y положит
+            else if (difx > -50 && difx < 0 && dify > 0 && dify < 50) // x neg y pos
             {
                 x -= difx;
                 y -= dify;
-                // dd
                 present(rende);
                 clear(rende);
             }
-            else if (difx > 0 && difx < 50 && dify > -50 && dify < 0) // x положит y отриц
+            else if (difx > 0 && difx < 50 && dify > -50 && dify < 0) // x pos y neg
             {
                 x -= difx;
                 y -= dify;
-                //dd
                 present(rende);
                 clear(rende);
             }
-        //}
     }
 };
-
-
-
-//void spawnEn(vector <Enemy> arr);
 
 #endif
