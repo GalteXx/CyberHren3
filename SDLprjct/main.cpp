@@ -10,16 +10,11 @@ int main(int argc, char* args[])
     SDL_Renderer* rende;
     SDL_CreateWindowAndRenderer(800, 800, 0, &wind, &rende);
     SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
-<<<<<<< Updated upstream
     bool GameRunning = true, Menu = true, ChooseDifficulty = true;
     bool Easy = false, Medium = false, Hard = false;
     setlocale(LC_ALL, "Russian");
     cout << "Враги боятся мыши, используй это, чтобы не дать нашему городу пасть. Сталкивай врагов в пропасти." << endl;
     cout << "Если три врага попадут в город, то мы будем уничтожены. Вся надежда на тебя." << endl;
-=======
-    bool GameRunning = true;
-    tower tow;
->>>>>>> Stashed changes
     
     vector <Enemy> arr;
     for (int i = 0; i < 10; i++)
@@ -89,7 +84,6 @@ int main(int argc, char* args[])
         clear(rende);
         for (int i = 0; i < arr.size(); i++)
         {
-            tow.updt(rende);
             arr[i].updt(rende);
         }
         present(rende);

@@ -48,9 +48,6 @@
     <ClCompile Include="NumLen.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="tower.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="All.h">
