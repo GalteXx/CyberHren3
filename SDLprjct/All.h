@@ -3,7 +3,11 @@
 #include "m.h"
 #include <vector>
 #include <cmath>
+<<<<<<< Updated upstream
 #include <iostream>
+=======
+#include "tower.h"
+>>>>>>> Stashed changes
 
 using namespace std;
 #define ALL_H
@@ -70,6 +74,10 @@ public:
         SDL_Event event;
         bool GameRunning = true;
         SDL_PollEvent(&event);
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             if (event.type == SDL_MOUSEMOTION)
             {
                 int xe, ye;
@@ -108,7 +116,21 @@ public:
                 present(rende);
                 clear(rende);
             }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     }
+    //void collision(tower t)
+    //{
+    //    if (x + size >= t.x + t.size && x - size < t.x + t.size)
+    //    {
+    //        if (y + size >= t.y + t.size && y - size < t.y + t.size)
+    //            t.hp--;
+    //    }
+    //    else if(x - size)
+    //}
+
 };
 
 #endif

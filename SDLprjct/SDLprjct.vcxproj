@@ -26,7 +26,11 @@
     <ClCompile Include="Points.cpp" />
     <ClCompile Include="Present.cpp" />
     <ClCompile Include="Clear.cpp" />
+<<<<<<< Updated upstream
     <ClCompile Include="Textures.cpp" />
+=======
+    <ClCompile Include="tower.h" />
+>>>>>>> Stashed changes
     <ClCompile Include="update.cpp" />
     <ClCompile Include="forms.cpp" />
     <ClCompile Include="xLine.cpp" />
