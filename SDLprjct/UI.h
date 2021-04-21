@@ -12,7 +12,7 @@ public:
 	{
 		for (int i = 0; i < tower::hp; i++)
 		{
-			sq(295 + 15 * i, 25, 30, rende);
+			sq(695 + 15 * i, 25, 15, rende);
 		}
 	}
 

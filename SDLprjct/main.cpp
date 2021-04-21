@@ -7,21 +7,29 @@ int m::y;
 int Enemy::speed;
 int tower::hp;//why do i have to do this...
 
-void collide(Enemy en, tower tow)
+
+void collide(Enemy &en, tower tow)
 {
-    int xpoint = 1;
-    int ypoint = 1;
+    //int xpoint = 1;
+    //int ypoint = 1;
+    //
+    //if (en.x + en.size >= tow.x - tow.size && en.x - en.size <= tow.x + tow.size)//if lefter
+    //    xpoint--;
+    //else if (en.x + en.size >= tow.x - tow.size && en.x - en.size >= tow.x + tow.size)//if righter
+    //    xpoint--;
+    //if (en.y + en.size >= tow.y - tow.size && en.y - en.size <= tow.y + tow.size)//if above
+    //    ypoint--;
+    //else if (en.y - en.size <= tow.y + tow.size && en.y + en.size > tow.y - tow.size)//if under
+    //if (ypoint == 0 && xpoint == 0)
+            //tower::hp--;*/
+    if (en.x >= tow.x - tow.size / 2 && en.x <= tow.x + tow.size / 2 && en.y >= tow.y - tow.size / 2 && en.y <= tow.y + tow.size / 2)
+    {
+        tower::hp--;
+        en.x = 100;
+        en.y = 200;//random values here :)
+    }
 
-    if (en.x + en.size >= tow.x - tow.size && en.x - en.size <= tow.x + tow.size)//if lefter
-        xpoint--;
-    else if (en.x + en.size >= tow.x - tow.size && en.x - en.size >= tow.x + tow.size)//if righter
-        xpoint--;
-    if (en.y + en.size >= tow.y - tow.size && en.y - en.size <= tow.y + tow.size)//if above
-        ypoint--;
-    else if (en.y - en.size <= tow.y + tow.size && en.y + en.size > tow.y - tow.size)//if under
-
-        if (ypoint == 0 && xpoint == 0)
-            tower::hp--;
+       
 }
 
 
@@ -30,6 +38,7 @@ int main(int argc, char* args[])
     SDL_Window* wind;
     SDL_Renderer* rende;
     tower tow;
+    tower::hp = 3;
     SDL_CreateWindowAndRenderer(800, 800, 0, &wind, &rende);
     SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
     bool GameRunning = true, Menu = true, ChooseDifficulty = true;
@@ -108,9 +117,10 @@ int main(int argc, char* args[])
         {
             arr[i].updt(rende);
             collide(arr[i], tow);
-            UI::update(rende);
+            
         }
         tow.updt(rende);
+        UI::update(rende);
         present(rende);
     }
     //int x = 100;

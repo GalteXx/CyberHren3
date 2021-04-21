@@ -46,7 +46,7 @@ public:
         run(rende);
         sq(x, y, size, rende);
 	}
-	void run( SDL_Renderer* rende)
+	void run(SDL_Renderer* rende)
 	{
         push(rende);
         int deltaX = abs(goal[0] - x);
