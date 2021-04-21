@@ -1,3 +1,9 @@
 ﻿  main.cpp
-C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(30,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
-  SDLprjct.vcxproj -> C:\Users\Maxim\source\repos\CyberHren3\x64\Debug\SDLprjct.exe
+C:\Users\georg\Documents\GitHub\CyberHren3\SDLprjct\main.cpp(21,18): warning C4101: 'v': unreferenced local variable
+C:\Users\georg\Documents\GitHub\CyberHren3\SDLprjct\main.cpp(21,12): warning C4101: 'y': unreferenced local variable
+C:\Users\georg\Documents\GitHub\CyberHren3\SDLprjct\main.cpp(21,24): warning C4101: 'f': unreferenced local variable
+C:\Users\georg\Documents\GitHub\CyberHren3\SDLprjct\main.cpp(21,15): warning C4101: 'c': unreferenced local variable
+C:\Users\georg\Documents\GitHub\CyberHren3\SDLprjct\main.cpp(21,9): warning C4101: 'x': unreferenced local variable
+C:\Users\georg\Documents\GitHub\CyberHren3\SDLprjct\main.cpp(21,27): warning C4101: 'g': unreferenced local variable
+C:\Users\georg\Documents\GitHub\CyberHren3\SDLprjct\main.cpp(21,21): warning C4101: 'd': unreferenced local variable
+  SDLprjct.vcxproj -> C:\Users\georg\Documents\GitHub\CyberHren3\x64\Debug\SDLprjct.exe

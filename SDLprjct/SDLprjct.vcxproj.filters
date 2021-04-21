@@ -27,10 +27,10 @@
     <ClCompile Include="xLine.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="sq.cpp">
+    <ClCompile Include="update.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="update.cpp">
+    <ClCompile Include="forms.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

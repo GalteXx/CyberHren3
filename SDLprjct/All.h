@@ -3,6 +3,7 @@
 #include "m.h"
 #include <vector>
 #include <cmath>
+#include <iostream>
 
 using namespace std;
 #define ALL_H
@@ -13,9 +14,16 @@ void clear(SDL_Renderer* rende);
 void present(SDL_Renderer* rende);
 void xLine(int x, int y, int xe, SDL_Renderer* rende);
 void sq(int x, int y, int l, SDL_Renderer* rende);
+void rc(int x, int y, int w, int h, SDL_Renderer* rende);
 
 
-
+class SpriteData
+{
+public:
+    int w = 0;
+    int h = 0;
+    vector <vector<SDL_Color> > texture;
+};
 
 class Enemy
 {
