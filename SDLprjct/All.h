@@ -29,6 +29,7 @@ void drawTexture(int x, int y, SpriteData pic, SDL_Renderer* rende);
 void points(int p, SDL_Renderer* rende);
 int num_len(int a);
 string int_to_str(int a);
+void redrawGrass(int x, int y, int size, SDL_Renderer* rende);
 //void tower_col(Enemy& en, tower tow);
 
 
@@ -45,7 +46,8 @@ public:
 	void updt(SDL_Renderer *rende)
 	{
         run(rende);
-        sq(x, y, size, rende);
+        drawTexture(x, y, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\ENEMY.bmp")), rende);
+        //(x, y, size, rende);
 	}
 	void run(SDL_Renderer* rende)
 	{
@@ -86,29 +88,21 @@ public:
             {
                 x -= difx;
                 y -= dify;
-                present(rende);
-                clear(rende);
             }
             else if (difx > -50 && difx < 0 && dify > -50 && dify < 0) // both neg
             {
                 x -= difx;
                 y -= dify;
-                present(rende);
-                clear(rende);
             }
             else if (difx > -50 && difx < 0 && dify > 0 && dify < 50) // x neg y pos
             {
                 x -= difx;
                 y -= dify;
-                present(rende);
-                clear(rende);
             }
             else if (difx > 0 && difx < 50 && dify > -50 && dify < 0) // x pos y neg
             {
                 x -= difx;
                 y -= dify;
-                present(rende);
-                clear(rende);
             }
     }
 

@@ -8,7 +8,7 @@ int Enemy::speed;
 int tower::hp;//why do i have to do this...
 
 
-void tower_col(Enemy &en, tower tow)
+void tower_col(Enemy &en, tower tow, bool &lose)
 {
     //int xpoint = 1;
     //int ypoint = 1;
@@ -26,6 +26,8 @@ void tower_col(Enemy &en, tower tow)
     {
         int a = 100, b = 700;
         tower::hp--;
+        if (tower::hp == 0)
+            lose = 1;
         en.x = rand() % (b - a + 1) + a;
         en.y = rand() % (b - a + 1) + a;//random values here :)
     }
@@ -42,13 +44,13 @@ int main(int argc, char* args[])
     tower::hp = 3;
     SDL_CreateWindowAndRenderer(800, 800, 0, &wind, &rende);
     SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
-    bool GameRunning = true, Menu = true, ChooseDifficulty = true;
-    bool Easy = false, Medium = false, Hard = false;
+    bool GameRunning = true, Menu = true, ChooseDifficulty = true, lose = false, check_texture = 1;;
     setlocale(LC_ALL, "Russian");
     cout << "Враги боятся мыши, используй это, чтобы не дать нашему городу пасть. Сталкивай врагов в пропасти." << endl;
     cout << "Если три врага попадут в город, то мы будем уничтожены. Вся надежда на тебя." << endl;
     
     vector <Enemy> arr;
+    
     for (int i = 0; i < 10; i++)
     {
         Enemy en;
@@ -57,8 +59,11 @@ int main(int argc, char* args[])
 
     for (int i = 0; i < arr.size(); i++)
     {
-        arr[i].x = i * 50;
-        arr[i].y = i * 10;
+        int a = 100, b = 700;
+        int x = rand() % (b - a + 1) + a;
+        int y = rand() % (b - a + 1) + a;
+        arr[i].x = x;
+        arr[i].y = y;
     }
 
     while(GameRunning)
@@ -74,9 +79,9 @@ int main(int argc, char* args[])
             {
                 int x, y;
                 SDL_GetMouseState(&x, &y);
-                if (x <= 600 && x >= 200 && y >= 200 && y <= 350)
+                if (x <= 600 && x >= 200 && y >= 300 && y <= 450)
                     Menu = 0;
-                if (x <= 600 && x >= 200 && y >= 450 && y <= 600)
+                if (x <= 600 && x >= 200 && y >= 550 && y <= 700)
                     SDL_Quit();
             }
             present(rende);
@@ -109,20 +114,32 @@ int main(int argc, char* args[])
                     Enemy::speed = 5;
                 }
             }
-            present(rende);
+            clear(rende);
         }
         clear(rende);
+        /*if (check_texture == 1)
+        {
+            drawTexture(0, 0, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\GRASS.bmp")), rende);
+            check_texture = 0;
+        }*/
         SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
         SDL_Delay(Enemy::speed);
         for (int i = 0; i < arr.size(); i++)
         {
             arr[i].updt(rende);
-            tower_col(arr[i], tow);
-            
+            tower_col(arr[i], tow, lose);
         }
         tow.updt(rende);
         UI::update(rende);
         present(rende);
+        if (lose == 1)
+        {
+            // GAME OVER
+            // RETRY
+            // CHANGE DIFFICULTY
+            // EXIT
+            SDL_Quit();
+        }
     }
     SDL_Quit();
     return 0;
