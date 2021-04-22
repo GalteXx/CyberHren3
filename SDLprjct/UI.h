@@ -12,6 +12,7 @@ public:
 	{
 		for (int i = 0; i < tower::hp; i++)
 		{
+			SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
 			sq(695 + 15 * i, 25, 15, rende);
 		}
 	}

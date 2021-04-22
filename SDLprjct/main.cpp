@@ -8,7 +8,7 @@ int Enemy::speed;
 int tower::hp;//why do i have to do this...
 
 
-void collide(Enemy &en, tower tow)
+void tower_col(Enemy &en, tower tow)
 {
     //int xpoint = 1;
     //int ypoint = 1;
@@ -24,9 +24,10 @@ void collide(Enemy &en, tower tow)
             //tower::hp--;*/
     if (en.x >= tow.x - tow.size / 2 && en.x <= tow.x + tow.size / 2 && en.y >= tow.y - tow.size / 2 && en.y <= tow.y + tow.size / 2)
     {
+        int a = 100, b = 700;
         tower::hp--;
-        en.x = 100;
-        en.y = 200;//random values here :)
+        en.x = rand() % (b - a + 1) + a;
+        en.y = rand() % (b - a + 1) + a;//random values here :)
     }
 
        
@@ -65,8 +66,8 @@ int main(int argc, char* args[])
         while (Menu)
         {
             clear(rende);
-            rc2(200, 200, 400, 150, rende);
-            rc2(200, 450, 400, 150, rende);
+            drawTexture(200, 300, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\START.bmp")), rende);
+            drawTexture(200, 550, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\EXIT.bmp")), rende);
             SDL_Event e;
             SDL_PollEvent (&e);
             if (e.type == SDL_MOUSEBUTTONDOWN)
@@ -83,9 +84,9 @@ int main(int argc, char* args[])
         while (ChooseDifficulty)
         {
             clear(rende);
-            rc2(200, 75, 400, 150, rende);
-            rc2(200, 325, 400, 150, rende);
-            rc2(200, 575, 400, 150, rende);
+            drawTexture(200, 75, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\EASY.bmp")), rende);
+            drawTexture(200, 325, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\MEDIUM.bmp")), rende);
+            drawTexture(200, 575, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\HARD.bmp")), rende);
             SDL_Event e;
             SDL_PollEvent(&e);
             if (e.type == SDL_MOUSEBUTTONDOWN)
@@ -110,31 +111,21 @@ int main(int argc, char* args[])
             }
             present(rende);
         }
-        rc1(400, 400, 100, 100, rende);
-        SDL_Delay(Enemy::speed);
         clear(rende);
+        SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
+        SDL_Delay(Enemy::speed);
         for (int i = 0; i < arr.size(); i++)
         {
             arr[i].updt(rende);
-            collide(arr[i], tow);
+            tower_col(arr[i], tow);
             
         }
         tow.updt(rende);
         UI::update(rende);
         present(rende);
     }
-    //int x = 100;
-    //int y = 150;
-    ////char* test1 = "C:\\button0.bmp";
-    //SpriteData pic = loadTexture(const_cast<char*>("C:\\Users\\georg\\Documents\\GitHub\\CyberHren3\\button1.bmp"));
-    //clear(rende);
-    //drawTexture(x, y, pic, rende);
-
-    ////rc(400, 400, 100, 50, rende);
-    //
-    //present(rende);
-    //SDL_Delay(500);
     SDL_Quit();
     return 0;
 }
 
+ 

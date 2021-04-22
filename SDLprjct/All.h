@@ -26,9 +26,10 @@ void rc2(int x, int y, int w, int h, SDL_Renderer* rende);
 Uint32 getpixel(SDL_Surface* surface, int x, int y);
 SpriteData loadTexture(char* path);
 void drawTexture(int x, int y, SpriteData pic, SDL_Renderer* rende);
-//void points(int p);
+void points(int p, SDL_Renderer* rende);
 int num_len(int a);
 string int_to_str(int a);
+//void tower_col(Enemy& en, tower tow);
 
 
 
