@@ -55,8 +55,8 @@ int main(int argc, char* args[])
     SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
     bool GameRunning = true, Menu = true, ChooseDifficulty = true, lose = false, check_texture = 1, gamePlay = 1;
     setlocale(LC_ALL, "Russian");
-    cout << "����� ������ ����, ��������� ���, ����� �� ���� ������ ������ �����. ��������� ������ � ��������." << endl;
-    cout << "���� ��� ����� ������� � �����, �� �� ����� ����������. ��� ������� �� ����." << endl;
+    cout << "" << endl;
+    cout << "" << endl;
     vector <Enemy> arr;
     for (int i = 0; i < 10; i++)
     {
@@ -153,7 +153,7 @@ int main(int argc, char* args[])
             for (int i = 0; i < arr.size(); i++)
             {
               arr[i].updt(rende);
-              tower_col(arr[i], tow, lose);
+              tower_col(arr[i], tow, lose, se);
               for (int j = 0; j < hol.size(); j++)
               {
                   hol[j].update(rende);
@@ -179,14 +179,22 @@ int main(int argc, char* args[])
                     {
                         int x, y;
                         SDL_GetMouseState(&x, &y);
-                        if (x <= 600 && x >= 200 && y >= 75 && y <= 225) // RETRY
+                        if (x <= 600 && x >= 200 && y >= 250 && y <= 400) // RETRY
                         {
                             se.playSoundEffect("C:\\SDL Game Assets\\MENU.wav");
                             lose = 0;
                             tower::hp = 3;
                             gamePlay = 1;
+                            for (int i = 0; i < arr.size(); i++)
+                            {
+                                int a = 100, int b = 700;
+                                x = rand() % (b - a + 1) + a;
+                                y = rand() % (b - a + 1) + a;
+                                arr[i].x = x;
+                                arr[i].y = y;
+                            }
                         }
-                        if (x <= 600 && x >= 200 && y >= 325 && y <= 475) // CHANGE DIFFICULTY
+                        if (x <= 600 && x >= 200 && y >= 425 && y <= 575) // CHANGE DIFFICULTY
                         {
                             se.playSoundEffect("C:\\SDL Game Assets\\MENU.wav");
                             lose = 0;
@@ -194,7 +202,7 @@ int main(int argc, char* args[])
                             tower::hp = 3;
                             ChooseDifficulty = 1;
                         }
-                        if (x <= 600 && x >= 200 && y >= 575 && y <= 725) // EXIT
+                        if (x <= 600 && x >= 200 && y >= 600 && y <= 750) // EXIT
                         {
                             se.playSoundEffect("C:\\SDL Game Assets\\MENU.wav");
                             SDL_Delay(300);
