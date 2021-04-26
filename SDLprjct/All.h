@@ -1,6 +1,8 @@
 #pragma once
 #include <SDL.h>
+#include <SDL_mixer.h>
 #include "m.h"
+#include "SDL2SoundEffects.h"
 #include <vector>
 #include <cmath>
 #include <iostream>
