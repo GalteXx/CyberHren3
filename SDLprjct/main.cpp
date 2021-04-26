@@ -34,9 +34,9 @@ void tower_col(Enemy &en, tower tow, bool &lose, SDL2SoundEffects &se)
     }
 }
 
-void hole_col(hole tow, Enemy &en)
+void hole_col(hole hol, Enemy &en)
 {
-    if (en.x >= tow.x - tow.sizex  && en.x <= tow.x + tow.sizex  && en.y >= tow.y - tow.sizey  && en.y <= tow.y + tow.sizey )
+    if (en.x >= hol.x - hol.sizex  && en.x <= hol.x + hol.sizex  && en.y >= hol.y - hol.sizey  && en.y <= hol.y + hol.sizey )
     {
         int a = 100, b = 700;
         en.x = rand() % (b - a + 1) + a;
@@ -55,8 +55,8 @@ int main(int argc, char* args[])
     SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
     bool GameRunning = true, Menu = true, ChooseDifficulty = true, lose = false, check_texture = 1, gamePlay = 1;
     setlocale(LC_ALL, "Russian");
-    cout << "Враги боятся мыши, используй это, чтобы не дать нашему городу пасть. Сталкивай врагов в пропасти." << endl;
-    cout << "Если три врага попадут в город, то мы будем уничтожены. Вся надежда на тебя." << endl;
+    cout << "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ." << endl;
+    cout << "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ." << endl;
     vector <Enemy> arr;
     for (int i = 0; i < 10; i++)
     {
@@ -66,10 +66,11 @@ int main(int argc, char* args[])
     vector <hole> hol;
     for (int i = 0; i < 4; i++)
     {
+        //0 % 2 = 0; 1 % 2 = 1; 2 % 2 = 0; 3 % 2 = 1
         hole holel;
         int a = 100, b = 700;
-        holel.x = rand() % (b - a + 1) + a;
-        holel.y = rand() % (b - a + 1) + a;
+        holel.x = (20 + (i % 2) * 780) % 801;
+        holel.y = 20 + 760 * (i / 2);
         hol.push_back(holel);
     }
     for (int i = 0; i < arr.size(); i++)
@@ -98,7 +99,7 @@ int main(int argc, char* args[])
                 if (x <= 600 && x >= 200 && y >= 300 && y <= 450)
                 {
                     se.playSoundEffect("C:\\SDL Game Assets\\MENU.wav");
-                    Menu = 0; 
+                    Menu = 0;
                 }
                 if (x <= 600 && x >= 200 && y >= 550 && y <= 700)
                 {
@@ -143,7 +144,7 @@ int main(int argc, char* args[])
             present(rende);
             gamePlay = 1;
         }
-        
+
         while (gamePlay)
         {
             clear(rende);
@@ -151,13 +152,13 @@ int main(int argc, char* args[])
             SDL_Delay(Enemy::speed);
             for (int i = 0; i < arr.size(); i++)
             {
-                arr[i].updt(rende);
-                tower_col(arr[i], tow, lose, se);
-                for (int i = 0; i < hol.size(); i++)
-                {
-                    hol[i].update(rende);
-                    hole_col(hol[i], arr[i]);
-                }
+              arr[i].updt(rende);
+              tower_col(arr[i], tow, lose);
+              for (int j = 0; j < hol.size(); j++)
+              {
+                  hol[j].update(rende);
+                  hole_col(hol[j], arr[i]);
+              }
             }
             tow.updt(rende);
             UI::update(rende);
@@ -204,10 +205,8 @@ int main(int argc, char* args[])
                 }
             }
         }
-        
+
     }
     SDL_Quit();
     return 0;
 }
-
- 
