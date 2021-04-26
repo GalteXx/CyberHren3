@@ -69,10 +69,11 @@ int main(int argc, char* args[])
     vector <hole> hol;
     for (int i = 0; i < 4; i++)
     {
+        //0 % 2 = 0; 1 % 2 = 1; 2 % 2 = 0; 3 % 2 = 1
         hole holel;
         int a = 100, b = 700;
-        holel.x = rand() % (b - a + 1) + a;
-        holel.y = rand() % (b - a + 1) + a;
+        holel.x = (20 + (i % 2) * 780) % 801;
+        holel.y = 20 + 760 * (i / 2);
         hol.push_back(holel);
     }
     for (int i = 0; i < arr.size(); i++)
