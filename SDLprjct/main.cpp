@@ -35,9 +35,9 @@ void tower_col(Enemy &en, tower tow, bool &lose)
        
 }
 
-void hole_col(hole tow, Enemy &en)
+void hole_col(hole hol, Enemy &en)
 {
-    if (en.x >= tow.x - tow.sizex  && en.x <= tow.x + tow.sizex  && en.y >= tow.y - tow.sizey  && en.y <= tow.y + tow.sizey )
+    if (en.x >= hol.x - hol.sizex  && en.x <= hol.x + hol.sizex  && en.y >= hol.y - hol.sizey  && en.y <= hol.y + hol.sizey )
     {
         int a = 100, b = 700;
         en.x = rand() % (b - a + 1) + a;
@@ -147,10 +147,10 @@ int main(int argc, char* args[])
         {
             arr[i].updt(rende);
             tower_col(arr[i], tow, lose);
-            for (int i = 0; i < hol.size(); i++)
+            for (int j = 0; j < hol.size(); j++)
             {
-                hol[i].update(rende);
-                hole_col(hol[i], arr[i]);
+                hol[j].update(rende);
+                hole_col(hol[j], arr[i]);
 
             }
         }
