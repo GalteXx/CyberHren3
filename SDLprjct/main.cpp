@@ -1,7 +1,7 @@
 #include "All.h"
 #include "tower.h"
 #include "UI.h"
-
+#include "hole.h"
 int m::x;
 int m::y;
 int Enemy::speed;
@@ -35,6 +35,16 @@ void tower_col(Enemy &en, tower tow, bool &lose)
        
 }
 
+void hole_col(hole tow, Enemy &en)
+{
+    if (en.x >= tow.x - tow.sizex  && en.x <= tow.x + tow.sizex  && en.y >= tow.y - tow.sizey  && en.y <= tow.y + tow.sizey )
+    {
+        int a = 100, b = 700;
+        en.x = rand() % (b - a + 1) + a;
+        en.y = rand() % (b - a + 1) + a;
+    }
+}
+
 
 int main(int argc, char* args[])
 {
@@ -56,7 +66,15 @@ int main(int argc, char* args[])
         Enemy en;
         arr.push_back(en);
     }
-
+    vector <hole> hol;
+    for (int i = 0; i < 4; i++)
+    {
+        hole holel;
+        int a = 100, b = 700;
+        holel.x = rand() % (b - a + 1) + a;
+        holel.y = rand() % (b - a + 1) + a;
+        hol.push_back(holel);
+    }
     for (int i = 0; i < arr.size(); i++)
     {
         int a = 100, b = 700;
@@ -114,7 +132,8 @@ int main(int argc, char* args[])
                     Enemy::speed = 5;
                 }
             }
-            clear(rende);
+            
+            present(rende);
         }
         clear(rende);
         /*if (check_texture == 1)
@@ -128,6 +147,12 @@ int main(int argc, char* args[])
         {
             arr[i].updt(rende);
             tower_col(arr[i], tow, lose);
+            for (int i = 0; i < hol.size(); i++)
+            {
+                hol[i].update(rende);
+                hole_col(hol[i], arr[i]);
+
+            }
         }
         tow.updt(rende);
         UI::update(rende);
