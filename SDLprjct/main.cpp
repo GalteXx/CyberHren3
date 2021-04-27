@@ -187,7 +187,7 @@ int main(int argc, char* args[])
                             gamePlay = 1;
                             for (int i = 0; i < arr.size(); i++)
                             {
-                                int a = 100, int b = 700;
+                                int a = 100, b = 700;
                                 x = rand() % (b - a + 1) + a;
                                 y = rand() % (b - a + 1) + a;
                                 arr[i].x = x;
