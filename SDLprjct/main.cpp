@@ -24,7 +24,7 @@ void tower_col(Enemy &en, tower tow, bool &lose, SDL2SoundEffects &se)
             //tower::hp--;*/
     if (en.x >= tow.x - tow.size / 2 && en.x <= tow.x + tow.size / 2 && en.y >= tow.y - tow.size / 2 && en.y <= tow.y + tow.size / 2)
     {
-        int a = 100, b = 700;
+        int a = 50, b = 750;
         tower::hp--;
         if (tower::hp == 0)
             lose = 1;
@@ -34,13 +34,14 @@ void tower_col(Enemy &en, tower tow, bool &lose, SDL2SoundEffects &se)
     }
 }
 
-void hole_col(hole hol, Enemy &en)
+void hole_col(hole hol, Enemy &en, int &p)
 {
     if (en.x >= hol.x - hol.sizex  && en.x <= hol.x + hol.sizex  && en.y >= hol.y - hol.sizey  && en.y <= hol.y + hol.sizey )
     {
         int a = 100, b = 700;
         en.x = rand() % (b - a + 1) + a;
         en.y = rand() % (b - a + 1) + a;
+        p += 50;
     }
 }
 
@@ -57,6 +58,8 @@ int main(int argc, char* args[])
     setlocale(LC_ALL, "Russian");
     cout << "" << endl;
     cout << "" << endl;
+
+    int p = -50; // points
     vector <Enemy> arr;
     for (int i = 0; i < 10; i++)
     {
@@ -64,15 +67,18 @@ int main(int argc, char* args[])
         arr.push_back(en);
     }
     vector <hole> hol;
-    for (int i = 0; i < 4; i++)
-    {
-        //0 % 2 = 0; 1 % 2 = 1; 2 % 2 = 0; 3 % 2 = 1
-        hole holel;
-        int a = 100, b = 700;
-        holel.x = (20 + (i % 2) * 780) % 801;
-        holel.y = 20 + 760 * (i / 2);
-        hol.push_back(holel);
-    }
+    hole h;
+    int a = 600, b = 700;
+    h.x = 200;
+    h.y = 600;
+    hol.push_back(h);
+    h.x = 600;
+    h.y = 200;
+    hol.push_back(h);
+    /*a = 100, b = 200;
+    h.x = rand() % (200 - 100 + 1) + 100;
+    h.y = rand() % (600 - 200 + 1) + 200;
+    hol.push_back(h);*/
     for (int i = 0; i < arr.size(); i++)
     {
         int a = 100, b = 700;
@@ -126,19 +132,19 @@ int main(int argc, char* args[])
                 {
                     se.playSoundEffect("C:\\SDL Game Assets\\MENU.wav");
                     ChooseDifficulty = 0;
-                    Enemy::speed = 15;
+                    Enemy::speed = 30;
                 }
                 if (x <= 600 && x >= 200 && y >= 325 && y <= 475)
                 {
                     se.playSoundEffect("C:\\SDL Game Assets\\MENU.wav");
                     ChooseDifficulty = 0;
-                    Enemy::speed = 10;
+                    Enemy::speed = 22;
                 }
                 if (x <= 600 && x >= 200 && y >= 575 && y <= 725)
                 {
                     se.playSoundEffect("C:\\SDL Game Assets\\MENU.wav");
                     ChooseDifficulty = 0;
-                    Enemy::speed = 5;
+                    Enemy::speed = 10;
                 }
             }
             present(rende);
@@ -149,6 +155,7 @@ int main(int argc, char* args[])
         {
             clear(rende);
             SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
+            points(p, rende);
             SDL_Delay(Enemy::speed);
             for (int i = 0; i < arr.size(); i++)
             {
@@ -157,7 +164,7 @@ int main(int argc, char* args[])
               for (int j = 0; j < hol.size(); j++)
               {
                   hol[j].update(rende);
-                  hole_col(hol[j], arr[i]);
+                  hole_col(hol[j], arr[i], p);
               }
             }
             tow.updt(rende);
@@ -165,6 +172,7 @@ int main(int argc, char* args[])
             present(rende);
             if (lose == 1)
             {
+                p = 0;
                 lose = 1;
                 while (lose)
                 {
@@ -201,6 +209,15 @@ int main(int argc, char* args[])
                             gamePlay = 0;
                             tower::hp = 3;
                             ChooseDifficulty = 1;
+                            for (int i = 0; i < arr.size(); i++)
+                            {
+                                tower::hp = 3;
+                                int a = 100, b = 700;
+                                x = rand() % (b - a + 1) + a;
+                                y = rand() % (b - a + 1) + a;
+                                arr[i].x = x;
+                                arr[i].y = y;
+                            }
                         }
                         if (x <= 600 && x >= 200 && y >= 600 && y <= 750) // EXIT
                         {

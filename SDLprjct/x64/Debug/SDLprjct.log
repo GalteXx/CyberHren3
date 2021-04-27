@@ -1,1 +1,4 @@
-﻿  SDLprjct.vcxproj -> C:\Users\Maxim\source\repos\CyberHren3\x64\Debug\SDLprjct.exe
+﻿  main.cpp
+C:\Users\georg\Documents\GitHub\CyberHren3\SDLprjct\m.h(30,2): warning C4091: 'static ': ignored on left of 'm' when no variable is declared
+C:\Users\georg\Documents\GitHub\CyberHren3\SDLprjct\UI.h(24,2): warning C4091: 'static ': ignored on left of 'UI' when no variable is declared
+  SDLprjct.vcxproj -> C:\Users\georg\Documents\GitHub\CyberHren3\x64\Debug\SDLprjct.exe
