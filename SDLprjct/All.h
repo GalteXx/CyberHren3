@@ -4,21 +4,15 @@
 #include "m.h"
 #include "SDL2SoundEffects.h"
 #include <vector>
-#include <cmath>
 #include <iostream>
-
 using namespace std;
 #define ALL_H
 #ifdef ALL_H
-
 class SpriteData
-{
-public:
+{public:
     int w = 0;
     int h = 0;
-    vector <vector<SDL_Color> > texture;
-};
-
+    vector <vector<SDL_Color> > texture;};
 void clear(SDL_Renderer* rende);
 void present(SDL_Renderer* rende);
 void xLine(int x, int y, int xe, SDL_Renderer* rende);
@@ -32,93 +26,15 @@ void points(int p, SDL_Renderer* rende);
 int num_len(int a);
 string int_to_str(int a);
 void redrawGrass(int x, int y, int size, SDL_Renderer* rende);
-
 class Enemy
-{
-public:
+{public:
 	static int speed;// ++ every 10 secs
 	int x = 0;
 	int y = 0;
     int goal[2] = {400, 400};// x, y
 	int size = 20;//px
-	void updt(SDL_Renderer *rende, int &p)
-	{
-        run(rende);
-        drawTexture(x, y, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\ENEMY.bmp")), rende);
-	}
-	void run(SDL_Renderer* rende)
-	{
-        push(rende);
-        int deltaX = abs(goal[0] - x);
-        int deltaY = abs(goal[1] - y);
-        int signX = x < goal[0] ? 1 : -1;
-        int signY = y < goal[1] ? 1 : -1;
-        int error = deltaX - deltaY;
-        int error2 = error * 2;
-        if (error2 > -deltaY)
-        {
-            error -= deltaY;
-            x += signX;
-        }
-        if (error2 < deltaX)
-        {
-            error += deltaX;
-            y += signY;
-        }
-	}
-    void push(SDL_Renderer *rende)
-    {
-        SDL_Event event;
-        bool GameRunning = true;
-        SDL_PollEvent(&event);
-            if (event.type == SDL_MOUSEMOTION)
-            {
-                int xe, ye;
-                SDL_GetMouseState(&xe, &ye);
-                m::setX(xe);
-                m::setY(ye);
-            }
-            int difx = m::getX() - x;
-            int dify = m::getY() - y;
-            if (difx < 50 && difx > 0 && dify < 50 && dify > 0) // both pos
-            {
-                x -= difx;
-                y -= dify;
-            }
-            else if (difx > -50 && difx < 0 && dify > -50 && dify < 0) // both neg
-            {
-                x -= difx;
-                y -= dify;
-            }
-            else if (difx > -50 && difx < 0 && dify > 0 && dify < 50) // x neg y pos
-            {
-                x -= difx;
-                y -= dify;
-            }
-            else if (difx > 0 && difx < 50 && dify > -50 && dify < 0) // x pos y neg
-            {
-                x -= difx;
-                y -= dify;
-            }
-    }
-
-    void kill(SDL_Renderer* rende, int& p, int &spawn)
-    {
-        int a = 250, b = 550;
-        x = rand() % (b - a + 1) + a;
-        if (spawn == 0)
-        {
-            y = 700;
-            spawn = 1;
-        }
-        else
-        {
-            y = 100;
-            spawn = 0;
-        }
-    }
-
-};
-
-
+    void updt(SDL_Renderer* rende, int& p);
+    void run(SDL_Renderer* rende);
+    void push(SDL_Renderer* rende);
+    void kill(SDL_Renderer* rende, int& p, int& spawn);};
 #endif
