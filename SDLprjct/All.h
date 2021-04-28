@@ -121,6 +121,4 @@ public:
 };
 
 
-void kill_execute(vector <Enemy>& arr, SDL_Renderer* rende, int& p, int& spawn, int& zeroTime, int& currentTime, SDL2SoundEffects& se);
-void smoothDeploy(std::vector<Enemy>& arr, int& spawn);
 #endif

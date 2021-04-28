@@ -21,18 +21,25 @@
   <ItemGroup>
     <ClCompile Include="collide.cpp" />
     <ClCompile Include="Collisions.cpp" />
+    <ClCompile Include="DBP.cpp" />
+    <ClCompile Include="dolLosingStuff.cpp" />
     <ClCompile Include="EnUpdt.cpp" />
+    <ClCompile Include="FigItOut.cpp" />
+    <ClCompile Include="figItOut1.cpp" />
+    <ClCompile Include="fillEnArr.cpp" />
     <ClCompile Include="fillHoles.cpp" />
     <ClCompile Include="IntToStr.cpp" />
     <ClCompile Include="KillExecution.cpp" />
     <ClCompile Include="loadTexture.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuStuff.cpp" />
     <ClCompile Include="NumLen.cpp" />
     <ClCompile Include="Points.cpp" />
     <ClCompile Include="Present.cpp" />
     <ClCompile Include="Clear.cpp" />
     <ClCompile Include="SDL2SoundEffects.cpp" />
     <ClCompile Include="smDepl.cpp" />
+    <ClCompile Include="ChoosingDIfficulty.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="texturesN.cpp" />
     <ClCompile Include="update.cpp" />

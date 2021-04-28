@@ -1,7 +1,6 @@
 #include "All.h"
 #include "tower.h"
 #include "hole.h"
-
 void tower_col(Enemy& en, tower tow, bool& lose, SDL2SoundEffects& se, int& spawn)
 {
     if (en.x >= tow.x - tow.size / 2 && en.x <= tow.x + tow.size / 2 && en.y >= tow.y - tow.size / 2 && en.y <= tow.y + tow.size / 2)

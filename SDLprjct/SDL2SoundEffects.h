@@ -15,3 +15,4 @@ private:
 	std::vector<Mix_Chunk*> mSoundEffectBank;
 
 };
+

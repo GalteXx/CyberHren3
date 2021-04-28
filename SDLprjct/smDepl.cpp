@@ -17,4 +17,5 @@ void smoothDeploy(std::vector<Enemy>& arr, int& spawn)
             spawn = 0;
         }
     }
+    spawn = 0;
 }
