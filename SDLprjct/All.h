@@ -82,7 +82,6 @@ public:
                 SDL_GetMouseState(&xe, &ye);
                 m::setX(xe);
                 m::setY(ye);
-                
             }
             int difx = m::getX() - x;
             int dify = m::getY() - y;
