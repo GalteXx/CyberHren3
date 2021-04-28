@@ -8,43 +8,60 @@ int Enemy::speed;
 int tower::hp;//why do i have to do this...
 
 
-void tower_col(Enemy &en, tower tow, bool &lose, SDL2SoundEffects &se)
+void tower_col(Enemy &en, tower tow, bool &lose, SDL2SoundEffects &se, int &spawn)
 {
-    //int xpoint = 1;
-    //int ypoint = 1;
-    //
-    //if (en.x + en.size >= tow.x - tow.size && en.x - en.size <= tow.x + tow.size)//if lefter
-    //    xpoint--;
-    //else if (en.x + en.size >= tow.x - tow.size && en.x - en.size >= tow.x + tow.size)//if righter
-    //    xpoint--;
-    //if (en.y + en.size >= tow.y - tow.size && en.y - en.size <= tow.y + tow.size)//if above
-    //    ypoint--;
-    //else if (en.y - en.size <= tow.y + tow.size && en.y + en.size > tow.y - tow.size)//if under
-    //if (ypoint == 0 && xpoint == 0)
-            //tower::hp--;*/
     if (en.x >= tow.x - tow.size / 2 && en.x <= tow.x + tow.size / 2 && en.y >= tow.y - tow.size / 2 && en.y <= tow.y + tow.size / 2)
     {
-        int a = 50, b = 750;
         tower::hp--;
         if (tower::hp == 0)
             lose = 1;
+        int a = 250, b = 550;
         en.x = rand() % (b - a + 1) + a;
-        en.y = rand() % (b - a + 1) + a;
+        if (spawn == 0)
+        {
+            en.y = 700;
+            spawn = 1;
+        }
+        else
+        {
+            en.y = 100;
+            spawn = 0;
+        }
         se.playSoundEffect("C:\\SDL Game Assets\\TOWER.wav");
     }
 }
 
-void hole_col(hole hol, Enemy &en, int &p)
+void hole_col(hole hol, Enemy &en, int &p, int &spawn, SDL2SoundEffects &se)
 {
-    if (en.x >= hol.x - hol.sizex  && en.x <= hol.x + hol.sizex  && en.y >= hol.y - hol.sizey  && en.y <= hol.y + hol.sizey )
+    if (en.x >= hol.x - hol.sizex/2  && en.x <= hol.x + hol.sizex/2  && en.y >= hol.y - hol.sizey  && en.y <= hol.y + hol.sizey )
     {
-        int a = 100, b = 700;
+        int a = 250, b = 550;
         en.x = rand() % (b - a + 1) + a;
-        en.y = rand() % (b - a + 1) + a;
+        if (spawn == 0)
+        {
+            en.y = 700;
+            spawn = 1;
+        }
+        else
+        {
+            en.y = 100;
+            spawn = 0;
+        }
         p += 50;
+        se.playSoundEffect("C:\\SDL Game Assets\\HOLE.wav");
     }
 }
 
+void kill_execute(vector <Enemy>& arr, SDL_Renderer* rende, int &p, int &spawn, int &zeroTime, int &currentTime, SDL2SoundEffects& se)
+{
+    currentTime = SDL_GetTicks();
+    if (currentTime - zeroTime > 10000) {
+        zeroTime += 10000;
+        for (int i = 0; i < arr.size(); i++)
+            arr[i].kill(rende, p, spawn);
+        se.playSoundEffect("C:\\SDL Game Assets\\KILL.wav");
+    }
+}
 
 int main(int argc, char* args[])
 {
@@ -56,38 +73,47 @@ int main(int argc, char* args[])
     SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
     bool GameRunning = true, Menu = true, ChooseDifficulty = true, lose = false, check_texture = 1, gamePlay = 1;
     setlocale(LC_ALL, "Russian");
-    cout << "Враги боятся курсора. Успользуй его, чтобы не дать им добраться до центра." << endl;
+    cout << "Враги боятся курсора. Используй его, чтобы не дать им добраться до центра." << endl;
     cout << "Большие прямоугольники это пропасти, в них можно сталкивать врагов." << endl;
     cout << "Если враги доберутся до центра 3 раза, то игра окончится." << endl;
 
-    int p = -50; // points
+    int p = 0; // points
     vector <Enemy> arr;
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 7; i++)
     {
         Enemy en;
         arr.push_back(en);
     }
     vector <hole> hol;
     hole h;
-    int a = 600, b = 700;
-    h.x = 200;
-    h.y = 600;
+    h.x = 75;
+    h.y = 400;
     hol.push_back(h);
-    h.x = 600;
-    h.y = 200;
+    h.x = 725;
+    h.y = 400;
     hol.push_back(h);
     /*a = 100, b = 200;
     h.x = rand() % (200 - 100 + 1) + 100;
     h.y = rand() % (600 - 200 + 1) + 200;
     hol.push_back(h);*/
+    int zeroTime = 0, currentTime = 0;
+    int spawn = 0;
     for (int i = 0; i < arr.size(); i++)
     {
-        int a = 100, b = 700;
-        int x = rand() % (b - a + 1) + a;
-        int y = rand() % (b - a + 1) + a;
-        arr[i].x = x;
-        arr[i].y = y;
+        int a = 250, b = 550;
+        arr[i].x = rand() % (b - a + 1) + a;
+        if (spawn == 0)
+        {
+            arr[i].y = 700;
+            spawn = 1;
+        }
+        else
+        {
+            arr[i].y = 100;
+            spawn = 0;
+        }
     }
+    spawn = 0;
     SDL2SoundEffects se;
     while(GameRunning)
     {
@@ -133,13 +159,13 @@ int main(int argc, char* args[])
                 {
                     se.playSoundEffect("C:\\SDL Game Assets\\MENU.wav");
                     ChooseDifficulty = 0;
-                    Enemy::speed = 30;
+                    Enemy::speed = 25;
                 }
                 if (x <= 600 && x >= 200 && y >= 325 && y <= 475)
                 {
                     se.playSoundEffect("C:\\SDL Game Assets\\MENU.wav");
                     ChooseDifficulty = 0;
-                    Enemy::speed = 22;
+                    Enemy::speed = 20;
                 }
                 if (x <= 600 && x >= 200 && y >= 575 && y <= 725)
                 {
@@ -157,16 +183,20 @@ int main(int argc, char* args[])
             clear(rende);
             SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
             points(p, rende);
-            SDL_Delay(Enemy::speed);
+            SDL_Delay(Enemy::speed); 
+            SDL_Event e;
+            SDL_PollEvent(&e);
+            if (e.type == SDL_MOUSEBUTTONDOWN)
+                kill_execute(arr, rende, p, spawn, zeroTime, currentTime, se);
             for (int i = 0; i < arr.size(); i++)
             {
-              arr[i].updt(rende, p);
-              tower_col(arr[i], tow, lose, se);
-              for (int j = 0; j < hol.size(); j++)
-              {
-                  hol[j].update(rende);
-                  hole_col(hol[j], arr[i], p);
-              }
+                arr[i].updt(rende, p);
+                tower_col(arr[i], tow, lose, se, spawn);
+                for (int j = 0; j < hol.size(); j++)
+                {
+                    hol[j].update(rende);
+                    hole_col(hol[j], arr[i], p, spawn, se);
+                }
             }
             tow.updt(rende);
             UI::update(rende);
@@ -196,11 +226,18 @@ int main(int argc, char* args[])
                             gamePlay = 1;
                             for (int i = 0; i < arr.size(); i++)
                             {
-                                int a = 100, b = 700;
-                                x = rand() % (b - a + 1) + a;
-                                y = rand() % (b - a + 1) + a;
-                                arr[i].x = x;
-                                arr[i].y = y;
+                                int a = 250, b = 550;
+                                arr[i].x = rand() % (b - a + 1) + a;
+                                if (spawn == 0)
+                                {
+                                    arr[i].y = 700;
+                                    spawn = 1;
+                                }
+                                else
+                                {
+                                    arr[i].y = 100;
+                                    spawn = 0;
+                                }
                             }
                         }
                         if (x <= 600 && x >= 200 && y >= 425 && y <= 575) // CHANGE DIFFICULTY
@@ -213,11 +250,18 @@ int main(int argc, char* args[])
                             for (int i = 0; i < arr.size(); i++)
                             {
                                 tower::hp = 3;
-                                int a = 100, b = 700;
-                                x = rand() % (b - a + 1) + a;
-                                y = rand() % (b - a + 1) + a;
-                                arr[i].x = x;
-                                arr[i].y = y;
+                                int a = 250, b = 550;
+                                arr[i].x = rand() % (b - a + 1) + a;
+                                if (spawn == 0)
+                                {
+                                    arr[i].y = 700;
+                                    spawn = 1;
+                                }
+                                else
+                                {
+                                    arr[i].y = 100;
+                                    spawn = 0;
+                                }
                             }
                         }
                         if (x <= 600 && x >= 200 && y >= 600 && y <= 750) // EXIT

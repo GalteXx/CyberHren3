@@ -48,7 +48,6 @@ public:
 	void updt(SDL_Renderer *rende, int &p)
 	{
         run(rende);
-        kill(rende, p);
         drawTexture(x, y, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\ENEMY.bmp")), rende);
         //(x, y, size, rende);
 	}
@@ -109,26 +108,19 @@ public:
             }
     }
 
-    void kill(SDL_Renderer* rende, int& p)
+    void kill(SDL_Renderer* rende, int& p, int &spawn)
     {
-        SDL_Event event;
-        SDL_PollEvent(&event);
-        if (event.type == SDL_MOUSEBUTTONDOWN)
+        int a = 250, b = 550;
+        x = rand() % (b - a + 1) + a;
+        if (spawn == 0)
         {
-            int xe, ye;
-            SDL_GetMouseState(&xe, &ye);
-            m::setX(xe);
-            m::setY(ye);
-
-            int difx = m::getX() - x;
-            int dify = m::getY() - y;
-            if (difx < 200 && difx > -200 && dify < 200 && dify > -200)
-            {
-                int a = 100, b = 700;
-                x = rand() % (b - a + 1) + a;
-                y = rand() % (b - a + 1) + a;
-                p += 50;
-            }
+            y = 700;
+            spawn = 1;
+        }
+        else
+        {
+            y = 100;
+            spawn = 0;
         }
     }
 

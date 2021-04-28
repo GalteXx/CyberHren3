@@ -12,25 +12,25 @@ void points(int p_int, SDL_Renderer* rende)
 	for (int i = 0; i < len; i++)
 	{
 		if (p_str[i] == '0')
-			drawTexture(400 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\0.bmp")), rende);
+			drawTexture(200 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\0.bmp")), rende);
 		if (p_str[i] == '1')
-			drawTexture(400 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\1.bmp")), rende);
+			drawTexture(200 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\1.bmp")), rende);
 		if (p_str[i] == '2')
-			drawTexture(400 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\2.bmp")), rende);
+			drawTexture(200 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\2.bmp")), rende);
 		if (p_str[i] == '3')
-			drawTexture(400 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\3.bmp")), rende);
+			drawTexture(200 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\3.bmp")), rende);
 		if (p_str[i] == '4')
-			drawTexture(400 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\4.bmp")), rende);
+			drawTexture(200 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\4.bmp")), rende);
 		if (p_str[i] == '5')
-			drawTexture(400 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\5.bmp")), rende);
+			drawTexture(200 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\5.bmp")), rende);
 		if (p_str[i] == '6')
-			drawTexture(400 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\6.bmp")), rende);
+			drawTexture(200 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\6.bmp")), rende);
 		if (p_str[i] == '7')
-			drawTexture(400 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\7.bmp")), rende);
+			drawTexture(200 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\7.bmp")), rende);
 		if (p_str[i] == '8')
-			drawTexture(400 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\8.bmp")), rende);
+			drawTexture(200 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\8.bmp")), rende);
 		if (p_str[i] == '9')
-			drawTexture(400 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\9.bmp")), rende);
+			drawTexture(200 + j, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\9.bmp")), rende);
 		j +=50;
 	}
 }

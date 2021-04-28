@@ -8,8 +8,8 @@ class hole
 public:
 	int x;
 	int y;
-	int sizex = 100;
-	int sizey = 200;
+	int sizex = 150;
+	int sizey = 800;
 
 	void update(SDL_Renderer* rende)
 	{

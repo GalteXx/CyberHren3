@@ -14,7 +14,7 @@ public:
 		{
 			SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
 			//sq(695 + 15 * i, 25, 15, rende);
-			drawTexture(600 + 50 * i, 25, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\HEART.bmp")), rende);
+			drawTexture(500 + 50 * i, 20, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\HEART.bmp")), rende);
 		}
 	}
 
