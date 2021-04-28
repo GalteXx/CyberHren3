@@ -45,9 +45,10 @@ public:
 	int y = 0;
     int goal[2] = {400, 400};// x, y
 	int size = 20;//px
-	void updt(SDL_Renderer *rende)
+	void updt(SDL_Renderer *rende, int &p)
 	{
         run(rende);
+        kill(rende, p);
         drawTexture(x, y, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\ENEMY.bmp")), rende);
         //(x, y, size, rende);
 	}
@@ -106,6 +107,29 @@ public:
                 x -= difx;
                 y -= dify;
             }
+    }
+
+    void kill(SDL_Renderer* rende, int& p)
+    {
+        SDL_Event event;
+        SDL_PollEvent(&event);
+        if (event.type == SDL_MOUSEBUTTONDOWN)
+        {
+            int xe, ye;
+            SDL_GetMouseState(&xe, &ye);
+            m::setX(xe);
+            m::setY(ye);
+
+            int difx = m::getX() - x;
+            int dify = m::getY() - y;
+            if (difx < 200 && difx > -200 && dify < 200 && dify > -200)
+            {
+                int a = 100, b = 700;
+                x = rand() % (b - a + 1) + a;
+                y = rand() % (b - a + 1) + a;
+                p += 50;
+            }
+        }
     }
 
 };

@@ -56,8 +56,9 @@ int main(int argc, char* args[])
     SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
     bool GameRunning = true, Menu = true, ChooseDifficulty = true, lose = false, check_texture = 1, gamePlay = 1;
     setlocale(LC_ALL, "Russian");
-    cout << "" << endl;
-    cout << "" << endl;
+    cout << "Враги боятся курсора. Успользуй его, чтобы не дать им добраться до центра." << endl;
+    cout << "Большие прямоугольники это пропасти, в них можно сталкивать врагов." << endl;
+    cout << "Если враги доберутся до центра 3 раза, то игра окончится." << endl;
 
     int p = -50; // points
     vector <Enemy> arr;
@@ -159,7 +160,7 @@ int main(int argc, char* args[])
             SDL_Delay(Enemy::speed);
             for (int i = 0; i < arr.size(); i++)
             {
-              arr[i].updt(rende);
+              arr[i].updt(rende, p);
               tower_col(arr[i], tow, lose, se);
               for (int j = 0; j < hol.size(); j++)
               {
