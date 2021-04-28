@@ -6,22 +6,13 @@
 static class UI
 {
 public:
-
-
 	static void update(SDL_Renderer* rende)
 	{
 		for (int i = 0; i < tower::hp; i++)
 		{
 			SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
-			//sq(695 + 15 * i, 25, 15, rende);
 			drawTexture(500 + 50 * i, 20, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\HEART.bmp")), rende);
 		}
 	}
-
-
-
-
 };
-
-
 #endif // UI_H

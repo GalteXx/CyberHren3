@@ -2,67 +2,13 @@
 #include "tower.h"
 #include "UI.h"
 #include "hole.h"
+#include "main.h"
 int m::x;
 int m::y;
 int Enemy::speed;
 int tower::hp;//why do i have to do this...
-
-
-void tower_col(Enemy &en, tower tow, bool &lose, SDL2SoundEffects &se, int &spawn)
-{
-    if (en.x >= tow.x - tow.size / 2 && en.x <= tow.x + tow.size / 2 && en.y >= tow.y - tow.size / 2 && en.y <= tow.y + tow.size / 2)
-    {
-        tower::hp--;
-        if (tower::hp == 0)
-            lose = 1;
-        int a = 250, b = 550;
-        en.x = rand() % (b - a + 1) + a;
-        if (spawn == 0)
-        {
-            en.y = 700;
-            spawn = 1;
-        }
-        else
-        {
-            en.y = 100;
-            spawn = 0;
-        }
-        se.playSoundEffect("C:\\SDL Game Assets\\TOWER.wav");
-    }
-}
-
-void hole_col(hole hol, Enemy &en, int &p, int &spawn, SDL2SoundEffects &se)
-{
-    if (en.x >= hol.x - hol.sizex/2  && en.x <= hol.x + hol.sizex/2  && en.y >= hol.y - hol.sizey  && en.y <= hol.y + hol.sizey )
-    {
-        int a = 250, b = 550;
-        en.x = rand() % (b - a + 1) + a;
-        if (spawn == 0)
-        {
-            en.y = 700;
-            spawn = 1;
-        }
-        else
-        {
-            en.y = 100;
-            spawn = 0;
-        }
-        p += 50;
-        se.playSoundEffect("C:\\SDL Game Assets\\HOLE.wav");
-    }
-}
-
-void kill_execute(vector <Enemy>& arr, SDL_Renderer* rende, int &p, int &spawn, int &zeroTime, int &currentTime, SDL2SoundEffects& se)
-{
-    currentTime = SDL_GetTicks();
-    if (currentTime - zeroTime > 10000) {
-        zeroTime += 10000;
-        for (int i = 0; i < arr.size(); i++)
-            arr[i].kill(rende, p, spawn);
-        se.playSoundEffect("C:\\SDL Game Assets\\KILL.wav");
-    }
-}
-
+void tower_col(Enemy& en, tower tow, bool& lose, SDL2SoundEffects& se, int& spawn);
+void hole_col(hole hol, Enemy& en, int& p, int& spawn, SDL2SoundEffects& se);
 int main(int argc, char* args[])
 {
     SDL_Window* wind;
@@ -73,9 +19,7 @@ int main(int argc, char* args[])
     SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
     bool GameRunning = true, Menu = true, ChooseDifficulty = true, lose = false, check_texture = 1, gamePlay = 1;
     setlocale(LC_ALL, "Russian");
-    cout << "Враги боятся курсора. Используй его, чтобы не дать им добраться до центра." << endl;
-    cout << "Большие прямоугольники это пропасти, в них можно сталкивать врагов." << endl;
-    cout << "Если враги доберутся до центра 3 раза, то игра окончится." << endl;
+    cout << "Враги боятся курсора. Используй его, чтобы не дать им добраться до центра.\nБольшие прямоугольники это пропасти, в них можно сталкивать врагов.\nЕсли враги доберутся до центра 3 раза, то игра окончится." << endl;
 
     int p = 0; // points
     vector <Enemy> arr;
@@ -85,34 +29,9 @@ int main(int argc, char* args[])
         arr.push_back(en);
     }
     vector <hole> hol;
-    hole h;
-    h.x = 75;
-    h.y = 400;
-    hol.push_back(h);
-    h.x = 725;
-    h.y = 400;
-    hol.push_back(h);
-    /*a = 100, b = 200;
-    h.x = rand() % (200 - 100 + 1) + 100;
-    h.y = rand() % (600 - 200 + 1) + 200;
-    hol.push_back(h);*/
-    int zeroTime = 0, currentTime = 0;
-    int spawn = 0;
-    for (int i = 0; i < arr.size(); i++)
-    {
-        int a = 250, b = 550;
-        arr[i].x = rand() % (b - a + 1) + a;
-        if (spawn == 0)
-        {
-            arr[i].y = 700;
-            spawn = 1;
-        }
-        else
-        {
-            arr[i].y = 100;
-            spawn = 0;
-        }
-    }
+    fillHoles(hol);
+    int zeroTime = 0, currentTime = 0, spawn = 0;
+    smoothDeploy(arr, spawn);
     spawn = 0;
     SDL2SoundEffects se;
     while(GameRunning)

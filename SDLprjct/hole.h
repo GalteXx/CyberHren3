@@ -21,4 +21,6 @@ public:
 		//rc1(x, y, sizex / 2, sizey / 3, rende);
 	}
 };
+
+void fillHoles(std::vector<hole>& hol);
 #endif

@@ -32,10 +32,6 @@ void points(int p, SDL_Renderer* rende);
 int num_len(int a);
 string int_to_str(int a);
 void redrawGrass(int x, int y, int size, SDL_Renderer* rende);
-//void tower_col(Enemy& en, tower tow);
-
-
-
 
 class Enemy
 {
@@ -49,7 +45,6 @@ public:
 	{
         run(rende);
         drawTexture(x, y, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\ENEMY.bmp")), rende);
-        //(x, y, size, rende);
 	}
 	void run(SDL_Renderer* rende)
 	{
@@ -125,4 +120,7 @@ public:
 
 };
 
+
+void kill_execute(vector <Enemy>& arr, SDL_Renderer* rende, int& p, int& spawn, int& zeroTime, int& currentTime, SDL2SoundEffects& se);
+void smoothDeploy(std::vector<Enemy>& arr, int& spawn);
 #endif

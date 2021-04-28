@@ -21,14 +21,20 @@
   <ItemGroup>
     <ClCompile Include="collide.cpp" />
     <ClCompile Include="Collisions.cpp" />
+    <ClCompile Include="EnUpdt.cpp" />
+    <ClCompile Include="fillHoles.cpp" />
     <ClCompile Include="IntToStr.cpp" />
+    <ClCompile Include="KillExecution.cpp" />
+    <ClCompile Include="loadTexture.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NumLen.cpp" />
     <ClCompile Include="Points.cpp" />
     <ClCompile Include="Present.cpp" />
     <ClCompile Include="Clear.cpp" />
     <ClCompile Include="SDL2SoundEffects.cpp" />
+    <ClCompile Include="smDepl.cpp" />
     <ClCompile Include="Textures.cpp" />
+    <ClCompile Include="texturesN.cpp" />
     <ClCompile Include="update.cpp" />
     <ClCompile Include="forms.cpp" />
     <ClCompile Include="xLine.cpp" />
@@ -36,6 +42,7 @@
   <ItemGroup>
     <ClInclude Include="All.h" />
     <ClInclude Include="hole.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="SDL2SoundEffects.h" />
     <ClInclude Include="tower.h" />
     <ClInclude Include="UI.h" />

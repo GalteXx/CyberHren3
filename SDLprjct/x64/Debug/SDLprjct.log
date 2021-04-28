@@ -1,4 +1,35 @@
-﻿  main.cpp
-C:\Users\georg\Documents\GitHub\CyberHren3\SDLprjct\m.h(30,2): warning C4091: 'static ': ignored on left of 'm' when no variable is declared
-C:\Users\georg\Documents\GitHub\CyberHren3\SDLprjct\UI.h(24,2): warning C4091: 'static ': ignored on left of 'UI' when no variable is declared
-  SDLprjct.vcxproj -> C:\Users\georg\Documents\GitHub\CyberHren3\x64\Debug\SDLprjct.exe
+﻿  collide.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  Collisions.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  fillHoles.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  IntToStr.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  KillExecution.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  loadTexture.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  main.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\UI.h(17,2): warning C4091: static : пропускается слева от "UI", когда ни одна переменная не объявлена
+  NumLen.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  Points.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  Present.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  Clear.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  smDepl.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  Textures.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  texturesN.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  forms.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  xLine.cpp
+C:\Users\Maxim\source\repos\CyberHren3\SDLprjct\m.h(22,2): warning C4091: static : пропускается слева от "m", когда ни одна переменная не объявлена
+  Создание кода...
+  SDLprjct.vcxproj -> C:\Users\Maxim\source\repos\CyberHren3\x64\Debug\SDLprjct.exe

@@ -18,22 +18,6 @@ SDL2SoundEffects::SDL2SoundEffects()
         exit(-1);
     }
 }
-
-//void SDL2SoundEffects::addSoundEffect(const char* path)
-//{
-//    Mix_Chunk* tmpChunk = Mix_LoadWAV(path);
-//
-//    if (tmpChunk != nullptr)
-//    {
-//        mSoundEffectBank.push_back(tmpChunk);
-//        std::cout << (mSoundEffectBank.size() - 1) << " Sound is Ready, path: " << path << '\n';
-//    }
-//    else
-//    {
-//        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't init audio: %s", Mix_GetError());
-//    }
-//}
-
 void SDL2SoundEffects::playSoundEffect(const char* path)
 {
     Mix_Chunk* tmpChunk = Mix_LoadWAV(path);

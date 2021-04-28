@@ -12,21 +12,13 @@ private:
     static int y;
 public:
     static int getX()
-    {
-        return x;
-    }
+    {return x;}
     static void setX(int xe)
-    {
-        x = xe;
-    }
+    {x = xe;}
     static int getY()
-    {
-        return y;
-    }
+    {return y;}
     static void setY(int ye)
-    {
-        y = ye;
-    }
+    {y = ye;}
 };
 
 
