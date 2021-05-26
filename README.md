@@ -1,8 +1,4 @@
-# I hate SDL
-And this is why...
-
-
-## Devs(not pozers, real programmers)
+## Devs
 Karev G. T.
 
 Korsakov M. I.
