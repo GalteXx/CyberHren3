@@ -12,7 +12,7 @@ int main(int argc, char* args[]){
     tower::hp = 3;
     SDL_CreateWindowAndRenderer(800, 800, 0, &wind, &rende); SDL_SetRenderDrawColor(rende, 255, 255, 255, 255);
     bool GameRunning = true, Menu = true, ChooseDifficulty = true, lose = false, check_texture = 1, gamePlay = 1; setlocale(LC_ALL, "Russian");
-    cout << "Враги боятся курсора. Используй его, чтобы не дать им добраться до центра.\nБольшие прямоугольники это пропасти, в них можно сталкивать врагов.\nЕсли враги доберутся до центра 3 раза, то игра окончится." << endl;
+    cout << "Враги боятся курсора. Используй его, чтобы не дать им добраться до центра.\nБольшие прямоугольники это пропасти, в них можно сталкивать врагов.\nЕсли враги доберутся до центра 3 раза, то игра окончится. \nНажми лкм, чтобы оттолкнуть врагов до края карты. \nЭтой способностью ты можешь пользоваться раз в 10 секунд." << endl;
     vector <Enemy> arr; fillEnemyArr(arr);
     vector <hole> hol; fillHoles(hol);
     int zeroTime = 0, currentTime = 0, spawn = 0, p = 0;

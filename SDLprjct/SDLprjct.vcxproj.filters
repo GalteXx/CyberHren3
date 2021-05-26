@@ -54,9 +54,6 @@
     <ClCompile Include="SDL2SoundEffects.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="EnUpdt.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="loadTexture.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>

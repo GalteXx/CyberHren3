@@ -15,9 +15,5 @@ public:
 	void updt(SDL_Renderer* rende)
 	{
 		drawTexture(365, 365, loadTexture(const_cast<char*>("C:\\SDL Game Assets\\TOWER.bmp")), rende);
-		//sq(x, y, size, rende);
-		//sq(x, y, size / 2, rende);//
 	}
-
-
 };

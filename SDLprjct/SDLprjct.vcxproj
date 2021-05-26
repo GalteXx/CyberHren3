@@ -24,7 +24,6 @@
     <ClCompile Include="DBP.cpp" />
     <ClCompile Include="dolLosingStuff.cpp" />
     <ClCompile Include="enPush.cpp" />
-    <ClCompile Include="EnUpdt.cpp" />
     <ClCompile Include="FigItOut.cpp" />
     <ClCompile Include="figItOut1.cpp" />
     <ClCompile Include="fillEnArr.cpp" />
